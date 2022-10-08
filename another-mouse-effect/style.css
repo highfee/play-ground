@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #2b2b2b;
+  display: grid;
+  height: 100vh;
+  place-items: center;
+}
+
+section {
+  width: 500px;
+  height: 300px;
+  background: #333;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  overflow: hidden;
+  animation: color 5s linear infinite;
+}
+section div {
+  height: 20px;
+  width: 20px;
+  position: relative;
+  /* background: white; */
+  transform: translateX(10px);
+}
+
+section span {
+  position: absolute;
+  height: 10px;
+  width: 6px;
+  /* display: block; */
+  pointer-events: none;
+}
+
+div span:nth-child(1) {
+  --dur: 0.2s;
+  --ang: -45deg;
+  --org: 50%;
+  left: 0;
+  top: 0;
+}
+div span:nth-child(2) {
+  --dur: 0.3s;
+  --ang: 45deg;
+  --org: 50%;
+  right: 0;
+  top: 0;
+}
+div span:nth-child(3) {
+  --dur: 0.4s;
+  --ang: 45deg;
+  --org: 50%;
+  left: 0;
+  bottom: 0;
+}
+div span:nth-child(4) {
+  --dur: 0.5s;
+  --ang: -45deg;
+  --org: 50%;
+  right: 0;
+  bottom: 0;
+}
+section span::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 400%;
+  scale: 0.3;
+  left: 0;
+  top: 0;
+  background: rgb(163, 51, 51);
+  box-shadow: 0 0 5px #ddd, 0 0 10px #ddd, 0 0 15px #ddd, 0 0 20px #ddd,
+    0 0 10px #ddd, 0 0 25px #ddd;
+  transition: 1500ms linear;
+  transform: translateY(-20px);
+  /* animation: roll 300ms linear infinite forwards; */
+  animation-play-state: paused;
+}
+
+div:hover span::before {
+  /* transition-delay: var(--dur); */
+  rotate: var(--ang);
+  transform-origin: var(--org);
+  transition: 0s;
+  /*animation-play-state: running; */
+}
+
+@keyframes roll {
+  from {
+    rotate: 0deg;
+  }
+  to {
+    rotate: var(--ang);
+  }
+}
+@keyframes color {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.bar {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  perspective: 100px;
+  /* transform-style: preserve-3d; */
+  cursor: pointer;
+}
+.bar span {
+  display: inline-block;
+  width: 100%;
+  padding: 1.5px 0;
+  background: white;
+  position: absolute;
+  left: var(--left);
+  top: var(--top);
+  bottom: var(--bottom);
+  border-radius: 2px;
+  pointer-events: none;
+  transition: transform 700ms;
+  cursor: pointer;
+}
+.bar span:nth-child(3) {
+  transform: translateY(-50%);
+}
+.bar span:nth-child(2)::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+}
+.bar input {
+  display: inline-block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.bar input:checked ~ span:nth-child(3) {
+  opacity: 0;
+}
+.bar input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg);
+  width: 120%;
+  transform-origin: 0%;
+}
+.bar input:not(:checked) ~ span:nth-child(3) {
+  transition-property: all;
+  transition-delay: 500ms;
+}
+.bar input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg);
+  transform-origin: 0%;
+  width: 120%;
+}
+/* .bar:has(input:checked) {
+  height: 25px;
+} */

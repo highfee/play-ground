@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="move"></div>
+      <div class="move small"></div>
+      <h1>Hello</h1>
+    </div>
+
+    <script>
+      let mouse = document.querySelector(".move");
+      let small = document.querySelector(".small");
+      document.addEventListener("mousemove", (e) => {
+        mouse.style.left = `${e.clientX}px`;
+        mouse.style.top = `${e.clientY}px`;
+        small.style.left = `${e.clientX + 18}px`;
+        small.style.top = `${e.clientY + 18}px`;
+        mouse.style.display = "block";
+        small.style.display = "block";
+      });
+      document.addEventListener("mousewheel", (e) => {
+        console.log(e);
+      });
+    </script>
+  </body>
+</html>

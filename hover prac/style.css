@@ -1,0 +1,65 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: #212121;
+  display: grid;
+  place-items: center;
+}
+
+section {
+  width: 600px;
+  height: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  position: relative;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+/* .chops {
+  outline: 1px solid white;
+} */
+
+.roller {
+  position: absolute;
+  inset: 0;
+  background: white;
+  pointer-events: none;
+  transition: 500ms;
+  z-index: 1;
+}
+
+.chops:nth-child(1):hover ~ .roller {
+  transform: rotateX(20deg) rotateY(-20deg);
+}
+.chops:nth-child(2):hover ~ .roller {
+  transform: rotateX(20deg) rotateY(0);
+}
+.chops:nth-child(3):hover ~ .roller {
+  transform: rotateX(20deg) rotateY(20deg);
+}
+.chops:nth-child(4):hover ~ .roller {
+  transform: rotateY(-20deg);
+}
+.chops:nth-child(5):hover ~ .roller {
+  transform: translateZ(20px);
+}
+.chops:nth-child(6):hover ~ .roller {
+  transform: rotateY(20deg);
+}
+.chops:nth-child(7):hover ~ .roller {
+  transform: rotateX(-20deg) rotateY(-20deg);
+}
+.chops:nth-child(8):hover ~ .roller {
+  transform: rotateX(-20deg);
+}
+.chops:nth-child(9):hover ~ .roller {
+  transform: rotateX(-20deg) rotateY(20deg);
+}

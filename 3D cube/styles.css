@@ -1,0 +1,32 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+:root {
+  --size: 75px;
+  --cube-color: #0ff7;
+}
+
+body {
+  background: #000;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 50px;
+}
+
+.scene {
+  position: relative;
+}
+
+.ball {
+  width: 1em;
+  height: 1em;
+  background: lightblue;
+  border-radius: 50%;
+}
